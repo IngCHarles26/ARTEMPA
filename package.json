@@ -1,0 +1,14 @@
+{
+  "name": "artempa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && npm run server",
+    "build": "cd server && npm run build",
+    "dev": "cd client && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
