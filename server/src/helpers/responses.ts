@@ -1,0 +1,1 @@
+export const messageResponse = (success:boolean,message:string) => ({success,message})

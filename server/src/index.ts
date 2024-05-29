@@ -1,6 +1,7 @@
 import express from "express"
 import cors from 'cors'
 import dataBase from "./dataBase";
+import authRoutes from "./routes/authRoutes";
 
 
 const PORT = process.env.SERVER_PORT || 3001;
@@ -24,6 +25,7 @@ server.use(cors({
 }))
 
 
+server.use('/auth',authRoutes)
 
 server.listen(PORT,()=>{
   console.log('Server on...')
