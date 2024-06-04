@@ -1,0 +1,5 @@
+export { default as ClientsData} from './ClientsData'
+export { default as Purchases} from './Purchases'
+export { default as Results} from './Results'
+export { default as Sales} from './Sales'
+export { default as SuppliersData} from './SuppliersData'
