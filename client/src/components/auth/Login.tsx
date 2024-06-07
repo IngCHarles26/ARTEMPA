@@ -35,7 +35,7 @@ function Login() {
           <input type="password" name="password" value={loginInfo.password} onChange={handleChange} className="px-2 py-1 rounded text-xl border-2" />
         </div>
 
-        <input type="submit" value="INGRESA" className={"text-white bg-cyan-800 text-center text-xl w-40 p-2 rounded-xl font-bold transition-all " + (noInputs ? 'cursor-default opacity-10 ' : ' cursor-pointer hover:scale-105 hover:bg-yellow-300 hover:text-neutral-800 ')} />
+        <input type="submit" value="INGRESA" className={"text-white bg-cyan-800 text-center text-xl w-40 p-2 rounded-xl font-bold transition-all " + (noInputs ? 'cursor-default opacity-50 ' : ' cursor-pointer hover:scale-105 hover:bg-yellow-300 hover:text-neutral-800 ')} />
         {/* <p className="text-red-600 text-lg font-bold">Datos Incorrectos</p> */}
       </form>
     </div>

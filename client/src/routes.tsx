@@ -9,7 +9,11 @@ import { DataBase, ServiceData } from './components/technician-office'
 import { Technician, HomeTechnician, Assignments, Requests } from './components/technician'
 
 
+const base = 'localhost:5173'
+
 export const routes = {
+  global: (rt:string)=>base+`/${rt}`,
+  
   'home': 'home',
   
   auth: (rt:string)=>`auth/${rt}`,
@@ -49,13 +53,13 @@ export const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children:[
-      { path: 'auth/',
+      { path: 'auth',
         element: <Auth />,
         children:[
           { path: 'login',              element: <Login />},  // acceso a la aplicacion
           { path: 'register/:token',    element: <Register />}, // creacion de contraseña y confirmacion de datos necesarios
         ]},
-      { path: 'admin/',
+      { path: 'admin',
         element: <Admin />,
         children:[
           { path: 'home',               element: <HomeAdmin />}, // menu de accesos directos para ADMIN
@@ -101,6 +105,6 @@ export const router = createBrowserRouter([
           { path: 'requests',           element: <Requests />}, // formulario para solicitar algun repuesto, insumo o servicio      
         ]},
     ],
-    errorElement: <p>holi</p>
+    errorElement: <p>error</p>
   }
 ])
