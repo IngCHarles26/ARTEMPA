@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { routes } from "../../routes";
 
 const initialState = {
   name: '',

@@ -1,4 +1,9 @@
-export const AccOffMenu = [
+import appRoutes, { RouteMenu } from "../../../assets/routesAll"
+
+const {purchases,sales,results,clients_data,suppliers_data,statements} = appRoutes
+
+
+export const AccOffMenu:RouteMenu[] = [
   {
     image: (hover:boolean) => (
       <svg xmlns="http://www.w3.org/2000/svg" className={"icon icon-tabler icon-tabler-report-money w-full transition-all "
@@ -12,7 +17,7 @@ export const AccOffMenu = [
       </svg>
       ),
     name: 'compras',
-    route: '/accountant/purchases',
+    route: purchases,
   },
   {
     image: (hover:boolean) => (
@@ -27,7 +32,7 @@ export const AccOffMenu = [
         </svg>
       ),
     name: 'ventas',
-    route: '/accountant/sales',
+    route: sales,
   },
   {
     image: (hover:boolean) => (
@@ -43,7 +48,7 @@ export const AccOffMenu = [
         </svg>
       ),
     name: 'resultados',
-    route: '/accountant/results',
+    route: results,
   },
   {
     image: (hover:boolean) => (
@@ -58,21 +63,41 @@ export const AccOffMenu = [
         </svg>
       ),
     name: 'clientes',
-    route: '/accountant/clients-data',
+    route: clients_data,
   },
   {
     image: (hover:boolean) => (
         <svg xmlns="http://www.w3.org/2000/svg" className={"icon icon-tabler icon-tabler-report-money w-full transition-all "
           +( hover ? 'stroke-cyan-500' : 'stroke-neutral-500' )
-        }  viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        } viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M14 8a2 2 0 0 0 -2 -2" />
-          <path d="M6 8a6 6 0 1 1 12 0c0 4.97 -2.686 9 -6 9s-6 -4.03 -6 -9" />
-          <path d="M12 17v1a2 2 0 0 1 -2 2h-3a2 2 0 0 0 -2 2" />
+          <path d="M5 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+          <path d="M3 21v-2a4 4 0 0 1 4 -4h4c.948 0 1.818 .33 2.504 .88" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          <path d="M16 19h6" />
         </svg>
       ),
     name: 'proveedores',
-    route: '/accountant/suppliers-data',
+    route: suppliers_data,
+  },
+  {
+    image: (hover:boolean) => (
+      <svg xmlns="http://www.w3.org/2000/svg" className={"icon icon-tabler icon-tabler-report-money w-full transition-all "
+        +( hover ? 'stroke-cyan-500' : 'stroke-neutral-500' )
+      } viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 21l18 0" />
+        <path d="M3 10l18 0" />
+        <path d="M5 6l7 -3l7 3" />
+        <path d="M4 10l0 11" />
+        <path d="M20 10l0 11" />
+        <path d="M8 14l0 3" />
+        <path d="M12 14l0 3" />
+        <path d="M16 14l0 3" />
+      </svg>
+      ),
+    name: 'estados',
+    route: statements,
   },
   
 ]
