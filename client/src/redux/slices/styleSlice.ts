@@ -14,7 +14,6 @@ const styleSlice = createSlice({
   initialState,
   reducers: {
     setFullPage:    ( sta , act ) =>  { sta.fullPage = act.payload},
-   
   }
 })
 

@@ -16,11 +16,11 @@ function Office() {
   }, []);
 
   return (
-    <section className="">
+    <>
       <Header />
       <Outlet />
       {!pathname.includes('home') && <ButtonHome />}
-    </section>
+    </>
   );
 }
 

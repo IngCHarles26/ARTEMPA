@@ -6,15 +6,17 @@ function HomeAdmin() {
   const { admin } = appRoutes
 
   return (
-    <div className="h-96 flex flex-wrap  justify-center items-center mx-auto mt-28 p-10 gap-5">
-      {
-        AdmMenu.map(({image,name,route},ix)=>
-          <MenuHomeCard 
-            key={ix+' menuOption'} 
-            Image={image} 
-            name={name} 
-            route={'/'+admin(route)} />)
-      }
+    <div className="flex-grow flex justify-center items-center">
+      <div className="flex flex-wrap gap-4 p-4 justify-center">
+        {
+          AdmMenu.map(({image,name,route},ix)=>
+            <MenuHomeCard 
+              key={ix+' menuOption'} 
+              Image={image} 
+              name={name} 
+              route={'/'+admin(route)} />)
+        }
+      </div>
     </div>
   );
 }

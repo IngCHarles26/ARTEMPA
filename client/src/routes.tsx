@@ -8,6 +8,7 @@ import { Office, HomeOffice, ServicesRegister, Inventory, ServicesStatus, Budget
 import { DataBase, ServiceData } from './components/technician-office'
 import { Technician, HomeTechnician, Assignments, Requests } from './components/technician'
 import appRoutes from "./assets/routesAll";
+import ErrorPage from "./components/mini-components/ErrorPage";
 
 
 const {auth,register,admin,accountant,office,budget,service_data,technician,
@@ -72,6 +73,6 @@ export const router = createBrowserRouter([
           { path: requests,             element: <Requests />}, // formulario para solicitar algun repuesto, insumo o servicio      
         ]},
     ],
-    errorElement: <p>error</p>
+    errorElement: <ErrorPage />
   }
 ])

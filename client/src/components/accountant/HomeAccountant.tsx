@@ -8,15 +8,17 @@ function HomeAccountant() {
   const { accountant } = appRoutes
 
   return (
-    <div className="h-96 flex flex-wrap  justify-center items-center mx-auto mt-28 p-10 gap-5">
-      {
-        AccMenu.map(({image,name,route},ix)=>
-          <MenuHomeCard 
-            key={ix+' menuOption'} 
-            Image={image} 
-            name={name} 
-            route={'/'+accountant(route)} />)
-      }
+    <div className="flex-grow flex justify-center items-center">
+      <div className="flex flex-wrap gap-4 p-4 justify-center">
+        {
+          AccMenu.map(({image,name,route},ix)=>
+            <MenuHomeCard 
+              key={ix+' menuOption'} 
+              Image={image} 
+              name={name} 
+              route={'/'+accountant(route)} />)
+        }
+      </div>
     </div>
   );
 }
