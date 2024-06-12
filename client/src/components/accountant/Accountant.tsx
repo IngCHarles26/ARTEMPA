@@ -19,7 +19,7 @@ function Accountant() {
     <>
       <Header />
       <Outlet />
-      {!pathname.includes('home') && <ButtonHome />}
+      {/* {!pathname.includes('home') && <ButtonHome />} */}
     </>
   );
 }

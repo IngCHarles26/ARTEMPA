@@ -18,7 +18,7 @@ function ButtonHome() {
   }
 
   return (
-    <div className="absolute bottom-4 left-4 flex items-center space-x-3">
+    <div className="fixed bottom-2 left-2 md:bottom-4 md:left-4 flex items-center space-x-3">
         <div 
           onMouseEnter={()=>setVisible(true)}
           onMouseLeave={()=>setVisible(false)}

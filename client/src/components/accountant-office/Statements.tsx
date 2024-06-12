@@ -7,7 +7,7 @@
 
 */
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { dataStatementsAbm, dataStatementsMega } from "../../assets/dataHelp";
 
 const meses = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -17,19 +17,28 @@ function Statements() {
   const [statesMega, setStatesMega] = useState<typeof dataStatementsAbm>([]);
 
 
+
   const years = [2024,2023,2022]
   const nowYear = (new Date()).getFullYear()
   const allDataAbm = dataStatementsAbm
   const allDataMega = dataStatementsMega
 
-
-  const handleChange = (e:ChangeEvent<HTMLSelectElement>)=>{
-    const {value} = e.target
-    const filtAbm = allDataAbm.filter((el)=>el.year == +value)
-    const filtMega = allDataMega.filter((el)=>el.year == +value)
+  const filterYear = (year:number)=>{
+    const filtAbm = allDataAbm.filter((el)=>el.year == year)
+    const filtMega = allDataMega.filter((el)=>el.year == year)
     setStatesAbm(filtAbm)
     setStatesMega(filtMega)
   }
+
+
+  const handleChange = (e:ChangeEvent<HTMLSelectElement>)=>{
+    const {value} = e.target
+    filterYear(+value)
+  }
+
+  useEffect(() => {
+    filterYear(nowYear)
+  }, []);
 
   return (
     <div className="flex-grow flex flex-col">
