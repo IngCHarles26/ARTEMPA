@@ -45,14 +45,13 @@ function Statements() {
       <div className="w-full p-4 flex justify-center">
         <select name="year_statement" 
             onChange={handleChange}
-            className="p-2 rounded-lg text-neutral-500 font-extrabold text-lg md:text-2xl"
-          >
+            className="p-2 rounded-lg text-neutral-500 font-extrabold text-lg md:text-2xl">
           {
             years.map((el,ix)=>
               <option 
                   key={ix+'_year_value_statements'} 
                   value={el} 
-                  selected={el==nowYear}
+                  defaultValue={nowYear}
                 >
                 {el}
               </option>

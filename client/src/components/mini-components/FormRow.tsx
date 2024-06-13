@@ -19,21 +19,30 @@ interface Props {
 function FormRow(props:Props) {
   const {value,widths:w,minWidths:mW,align:al} = props
   const [editable, setEditable] = useState(false);
-  const [rowInfo, setRowInfo] = useState(value);
-  const firstRef = useRef(null)
+  const [rowInfo, setRowInfo] = useState({...value});
+  const [prueba, setPrueba] = useState({...value});
+  const [otraPrueba, setOtraPrueba] = useState();
+  const firstRef = useRef<HTMLInputElement>(null)
   
   const handleEdit = (e:FormEvent)=>{
     e.preventDefault();
     setEditable(!editable)
   }
 
+  console.log(value['ruc'],rowInfo['ruc'],prueba['ruc'])
+
   useEffect(() => {
-    //@ts-ignore
-    firstRef.current.focus()
+    if (editable && firstRef.current) {
+      firstRef.current.focus();
+    }
   }, [editable]);
+
   const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
     const {name,value} = e.target
-    setRowInfo({...rowInfo,[name]:value})
+    setRowInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   }
 
   return (
@@ -42,24 +51,24 @@ function FormRow(props:Props) {
     >
       <button
           onClick={handleEdit}
-          className={dataToTaliwind(w[0],mW[0],al[0])+(!editable?'bg-zinc-300':'bg-slate-100') }>
-        {
-          editable ? '💾' : '✏'
-        }
+          className={infToTail(w[0],mW[0],al[0])+(!editable?'bg-zinc-300':'bg-slate-100') }>
+            <p className=' hover:scale-125 transition-all'>
+              {editable ? '💾' : '✏'}
+            </p>
       </button>
         {
-          Object.keys(value).map((el,ix)=>{
+          Object.keys(rowInfo).map((el,ix)=>{
             const val = el as keyof ClientData
             return(
               <input
                 type="text"
-                key={ix+'_input_type_'+value} 
+                key={ix+'_input_type_'+value[val]} 
                 name={el}
                 value={rowInfo[val]}
                 ref={ix==0?firstRef:undefined}
                 disabled={!editable}
                 onChange={handleChange}
-                className={dataToTaliwind(w[+ix+1],mW[+ix+1],al[+ix+1])+'py-1 px-3 '+(!editable?'bg-zinc-300':'bg-slate-100')}/>
+                className={infToTail(w[+ix+1],mW[+ix+1],al[+ix+1])+'py-1 px-3 '+(!editable?'bg-zinc-300':'bg-slate-100')}/>
             )
           }
           )
@@ -75,6 +84,6 @@ export default FormRow;
 
 //_____________________________________
 
-function dataToTaliwind(w:string,mW:number,al:string){
+function infToTail(w:string,mW:number,al:string){
   return `w-${w} min-w-${mW} text-${al} `
 }

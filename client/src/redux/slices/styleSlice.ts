@@ -6,14 +6,13 @@ interface Info {
 
 const initialState:Info = {
   fullPage: false,
-
 }
 
 const styleSlice = createSlice({
   name: 'style',
   initialState,
   reducers: {
-    setFullPage:    ( sta , act ) =>  { sta.fullPage = act.payload},
+    setFullPage: ( sta , act ) =>  { sta.fullPage = act.payload},
   }
 })
 

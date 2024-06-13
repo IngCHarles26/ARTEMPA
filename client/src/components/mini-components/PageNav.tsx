@@ -9,10 +9,7 @@ function PageNav(props:Props) {
   const {pages} = props
   const {max,min} = Math
   const [current, setCurrent] = useState(1);
-  const [listPages, setListPages] = useState(Array.from({length:pages},(_,ix)=>ix+1));
 
-
-  console.log(current)
 
   const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
     const {value} = e.target;
@@ -23,7 +20,7 @@ function PageNav(props:Props) {
 
 
   return (
-    <div className="mt-1 flex justify-center items-center gap-5">
+    <div className="mt-1 flex justify-center items-center gap-5 ">
       <button 
         onClick={()=>{setCurrent(max(1,current-1))}}
         className={"transition-all hover:scale-110 "+(current==1 && '-z-50')}>
