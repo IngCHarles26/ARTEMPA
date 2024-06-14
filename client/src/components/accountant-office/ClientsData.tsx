@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { clientsDirection } from "../../assets/dataHelp";
 import { fDiv } from "../../assets/helpers";
 import useWindowSize from "../../hooks/useWindowSize";
@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { TypeStore } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { addNewClient } from "../../redux/slices/clientsSlice";
+import FormRowClients from "./mini-components/FormRowClients";
 
 export interface ClientData {
   ruc: string,
@@ -16,64 +17,85 @@ export interface ClientData {
 }
 
 function ClientsData() {
-  const widths = ['1/12','2/12','3/12','6/12']
-  const minWidths = [12,32,80,96]
-  const aligns = ['center','center','left','left']
+  //                  +               RUC             RAZON         DIRECCION
+  const widths    = [ 'w-1/12'      ,'w-2/12'       ,'w-3/12'     ,'w-6/12'     ]
+  const minWidths = [ 'min-w-14'    ,'min-w-32'     ,'min-w-52'   ,'min-w-64'   ]
+  const aligns    = [ 'text-center' ,'text-center'  ,'text-left'  ,'text-left'  ]
   const {height} =  useWindowSize()
 
   const clientsInfo = useSelector((st:TypeStore)=>st.clients);
   const dispatch = useDispatch();
 
-  const [clientsData, setClientsData] = useState([...clientsDirection]);
 
   const handleClick = (e:FormEvent)=>{
     e.preventDefault()
     const newClient = {ruc:' ',name:' ',address:' '}
-    // const newList = [newClient,...clientsData]
-    // console.log(newList)
-
     dispatch(addNewClient(newClient))
-    setClientsData([...clientsData,newClient])
   }
 
-  // console.log(clientsInfo)
-
   return (
-    <div className="flex-grow flex flex-col justify-start overflow-x-scroll px-4 pt-4">
+    <div className="flex-grow flex flex-col justify-start overflow-x-scroll px-4 pt-4 ">
+
+    {/* _______________ TABLE HEADER */}
+
       <form 
-        className="flex justify-start items-center  border-b-2 rounded-t-xl border-stone-950 bg-neutral-700">
+        className={`flex justify-start items-center w-auto`}>
+        
         <button 
-            onClick={handleClick}
-          className="w-1/12 min-w-12 bg-transparent text-neutral-300 text-center text-xl rounded-tl-xl hover:scale-125 transition-all">➕</button>
+          onClick={handleClick}
+          className={`transition-all bg-neutral-700 flex items-center justify-center  rounded-tl-lg
+            ${widths[0]} ${minWidths[0]} `}>
+
+            <p className={`text-center text-white text-3xl font-extrabold mb-1 hover:scale-125 `}>+</p>
+
+          </button>
+
         <input 
           type="text" 
           placeholder="RUC"
-          className="w-2/12 text-center p-2 min-w-32 bg-neutral-700 placeholder:text-neutral-00 outline-none border-l-2 text-white font-bold"/>
+          className={`text-center text-white placeholder:text-neutral-100 font-bold p-2 bg-neutral-700  outline-none border-l-2
+            ${widths[1]} ${minWidths[1]} `}/>
+        
         <input 
           type="text" 
           placeholder="RAZON SOCIAL"
-          className="w-3/12 text-center p-2 min-w-80 bg-neutral-700 placeholder:text-neutral-00 outline-none border-l-2 text-white font-bold"/>
+          className={`text-center text-white placeholder:text-neutral-100 font-bold p-2 bg-neutral-700  outline-none border-l-2  
+            ${widths[2]} ${minWidths[2]} `}/>
+
         <input 
           type="text" 
           placeholder="DIRECCIÓN"
-          className="w-6/12 text-center p-2 min-w-96 bg-neutral-700 placeholder:text-neutral-00 outline-none border-l-2 text-white font-bold rounded-tr-xl"/>
+          className={`text-center text-white placeholder:text-neutral-100 font-bold p-2 bg-neutral-700  outline-none border-l-2 rounded-tr-lg
+            ${widths[3]} ${minWidths[3]} `}/>
+
       </form>
-      <div>{
+
+    {/* _______________ TABLE CONTENT  */}
+
+      <div className="rounded-b-md mt-1">{
+
         clientsInfo.slice(0,fDiv(height,32)-6).map((client,ix)=>
-          <FormRow 
-            key={ix+'_formRow'}
-            value={client}
+          <FormRowClients 
+            key={ix+'_formRowClient'}
+            client={client}
             widths={widths}
             minWidths={minWidths}
             align={aligns}
           />
+
         )}
       </div>
+
+    {/* _______________ PAGINATION  */}
+
       <div className="flex-grow flex items-end justify-center mb-4" >
+
         <PageNav 
             pages={10}
           />  
+
       </div>
+
     </div>
   );
 }

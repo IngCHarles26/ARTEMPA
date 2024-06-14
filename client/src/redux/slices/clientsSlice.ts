@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ClientData } from "../../components/accountant-office/ClientsData";
-import { clientsDirection } from "../../assets/dataHelp";
+import { dataClients } from "../../assets/dataHelp";
+import { ClientsData } from "../../types";
 
 
-const initialState:ClientData[] = [...clientsDirection];
+const initialState:ClientsData[] = [...dataClients];
 
 
 const clientsSlice = createSlice({
@@ -11,8 +11,8 @@ const clientsSlice = createSlice({
   initialState,
   reducers:{
     addNewClient: ( sta , act ) => {
-      // sta.unshift(act.payload)
-      sta.push(act.payload)
+      sta.unshift(act.payload)
+      // sta.push(act.payload)
     }
   }
 })

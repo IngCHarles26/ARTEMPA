@@ -42,11 +42,13 @@ function Statements() {
 
   return (
     <div className="flex-grow flex flex-col">
+
       <div className="w-full p-4 flex justify-center">
+
         <select name="year_statement" 
             onChange={handleChange}
-            className="p-2 rounded-lg text-neutral-500 font-extrabold text-lg md:text-2xl">
-          {
+            className="p-2 rounded-lg text-neutral-500 font-extrabold text-lg md:text-2xl">{
+
             years.map((el,ix)=>
               <option 
                   key={ix+'_year_value_statements'} 
@@ -58,40 +60,47 @@ function Statements() {
             )
           }
         </select>
+
       </div>
+
       <div className="w-full flex-grow flex justify-center items-start mt-2 gap-20">
+
         <div className="flex flex-col justify- items-center w-1/3 gap-10 md:gap-24 ">
+
           <p>logo ABM</p>
-          <div className="flex flex-wrap gap-3 md:gap-5 justify-center" >
-            {
+
+          <div className="flex flex-wrap gap-3 md:gap-5 justify-center" >{
+
               statesAbm.map((el,ix)=> 
                 <a key={ix+'_statement_'+el.company} href="" 
-                  className="transition-all block p-2 border rounded-lg w-28 text-center bg-blue-600 text-white hover:scale-110 hover:font-extrabold hover:bg-blue-700 hover:tracking-wide"
-                >
+                  className="transition-all block p-2 border rounded-lg w-28 text-center bg-blue-600 text-white hover:scale-110 hover:font-extrabold hover:bg-blue-700 hover:tracking-wide">
                   {meses[el.month-1]}
                 </a>
               )
             }
           </div>
+
         </div>
 
         <div className="flex flex-col justify-center items-center w-1/3 gap-10 md:gap-24">
+
           <p>logo MEGAMAN</p>
-          <div className="flex flex-wrap gap-3 md:gap-5 justify-center" >
-            {
+
+          <div className="flex flex-wrap gap-3 md:gap-5 justify-center" >{
+
               statesMega.map((el,ix)=> 
                 <a key={ix+'_statement_'+el.company} href="" 
-                  className="transition-all block p-2 border rounded-lg w-28 text-center bg-red-600 text-white hover:scale-110 hover:font-extrabold hover:bg-red-700 hover:tracking-wide"
-                >
+                  className="transition-all block p-2 border rounded-lg w-28 text-center bg-red-600 text-white hover:scale-110 hover:font-extrabold hover:bg-red-700 hover:tracking-wide">
                   {meses[el.month-1]}
                 </a>
               )
             }
           </div>
+
         </div>
 
-
       </div>
+      
     </div>
   );
 }

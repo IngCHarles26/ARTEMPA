@@ -1,0 +1,1 @@
+export const bgFirstRow = 'bg-neutral-800'
