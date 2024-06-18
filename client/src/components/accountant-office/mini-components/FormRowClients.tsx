@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { ClientsData } from "../../../types";
+import useRowFocusForm from "../../../hooks/useRowFocusForm";
+import useHandleChange from "../../../hooks/useHandleChange";
 
 interface Props {
   client: ClientsData,
@@ -10,28 +12,14 @@ interface Props {
 
 function FormRowClients(props:Props) {
   const {client,widths:w,minWidths:mW,align:al} = props
-  const [editable, setEditable] = useState(false);
-  const [clientInfo, setClientInfo] = useState({...client});
-  const rowRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (editable && rowRef.current) {
-      rowRef.current.focus();
-    }
-  }, [editable]);
+  const {rowRef,editable, setEditable} = useRowFocusForm()
+  const [clientInfo,handleChange] = useHandleChange<ClientsData>({...client})
 
   const handleEdit = (e:FormEvent)=>{
     e.preventDefault();
     setEditable(!editable)
   }
 
-  const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
-    const {name,value} = e.target
-    setClientInfo((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  }
 
   return (
     <form 

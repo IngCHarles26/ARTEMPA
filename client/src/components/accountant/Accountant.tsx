@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
-import Header from "../mini-components/Header";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentNav, setNameUser, setTypeUser } from "../../redux/slices/userInfoSlice";
+import Navbar from "../mini-components/NavBar";
+import { AccMenu } from ".";
 
 function Accountant() {
   const dispatch = useDispatch();
@@ -15,8 +16,10 @@ function Accountant() {
 
   return (
     <>
-
-      <Header />
+      <Navbar 
+          menuOptions = { AccMenu }
+          userName = "violeta"
+        />
 
       <Outlet />
 

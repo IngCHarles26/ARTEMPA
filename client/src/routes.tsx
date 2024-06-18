@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
       { path: admin(''),
         element: <Admin />,
         children:[
-          { path: home,                 element: <HomeAdmin />}, // menu de accesos directos para ADMIN
+          // { path: home,                 element: <HomeAdmin />}, // menu de accesos directos para ADMIN
           { path: personnel_data,       element: <DataPersonnel />}, // lista filtrable de datos de personal
           { path: create_account,       element: <CreateAccount />}, // crear una cuenta de un usuario nuevo
           { path: edit_password,        element: <EditPassword />}, // Genera un enlace para que el usuario edite su contraseña
@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
       { path: accountant(''),
         element: <Accountant />,
         children: [
-          { path: home,                 element: <HomeAccountant />},  // menu de accesos directos apra CONTADOR
+          // { path: home,                 element: <HomeAccountant />},  // menu de accesos directos apra CONTADOR
           { path: purchases,            element: <Purchases />}, // lista filtrable de compras y la opcion de añadir una nuevas compras
           { path: sales,                element: <Sales />}, // lista filtrable de ventas y la opcion de añadir una nuevas ventas
           { path: results,              element: <Results />}, // resultados mensuales o anuales de compras y ventas, ventas por cliente, compras por proveedor
@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         { path: office(''),
         element: <Office />,
         children: [
-          { path: home,                 element: <HomeOffice />}, // menu de accesos directos para OFICINA
+          // { path: home,                 element: <HomeOffice />}, // menu de accesos directos para OFICINA
           { path: purchases,            element: <Purchases />}, // lista filtrable de compras y la opcion de añadir nuevas compras
           { path: sales,                element: <Sales />}, // lista filtrable de ventas y la opcion de añadir nuevas ventas
           { path: results,              element: <Results />}, // resultados mensuales o anuales de compras y ventas, por cliente, proveedor o totales
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
         { path: technician(''),
         element: <Technician />,
         children: [
-          { path: home,                 element: <HomeTechnician />}, // menu de accesos directos para TECNICO
+          // { path: home,                 element: <HomeTechnician />}, // menu de accesos directos para TECNICO
           { path: data_base,            element: <DataBase />}, // Lista filtrable de todos los servicios realizados
           { path: assignments,          element: <Assignments />}, // menu de servicios asignados
           { path: service_data(':id'),  element: <ServiceData /> }, // Menu de opciones para ingresar a los datos de un servicio en proceso o realizado          

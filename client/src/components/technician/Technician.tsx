@@ -4,6 +4,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import ButtonHome from "../mini-components/ButtonHome";
 import Header from "../mini-components/Header";
 import { setCurrentNav, setNameUser, setTypeUser } from "../../redux/slices/userInfoSlice";
+import Navbar from "../mini-components/NavBar";
+import { TechMenu } from ".";
 
 
 function Technician() {
@@ -18,9 +20,13 @@ function Technician() {
 
   return (
     <>
-      <Header />
+      <Navbar 
+          menuOptions = { TechMenu }
+          userName = "Delford"
+        />
+
       <Outlet />
-      {!pathname.includes('home') && <ButtonHome />}
+
     </>
   );
 }

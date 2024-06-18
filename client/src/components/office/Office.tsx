@@ -4,6 +4,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { setCurrentNav, setNameUser, setTypeUser } from "../../redux/slices/userInfoSlice";
 import Header from "../mini-components/Header";
 import ButtonHome from "../mini-components/ButtonHome";
+import Navbar from "../mini-components/NavBar";
+import { OffMenu } from ".";
 
 function Office() {
   const dispatch = useDispatch();
@@ -17,9 +19,13 @@ function Office() {
 
   return (
     <>
-      <Header />
+      <Navbar 
+          menuOptions = { OffMenu }
+          userName = "Milton"
+        />
+
       <Outlet />
-      {!pathname.includes('home') && <ButtonHome />}
+
     </>
   );
 }

@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface Info {
   fullPage: boolean,
+  menuStatus: boolean,
 }
 
 const initialState:Info = {
   fullPage: false,
+  menuStatus: false,
 }
 
 const styleSlice = createSlice({

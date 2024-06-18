@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { PurchasesData } from "../../../types";
+import useRowFocusForm from "../../../hooks/useRowFocusForm";
+import useHandleChange from "../../../hooks/useHandleChange";
 
 
 
@@ -12,15 +14,10 @@ interface Props {
 
 function FormRowPurchases(props:Props) {
   const {purchase,widths:w,minWidths:mW,align:al} = props
-  const [editable, setEditable] = useState(false);
   const [purchaseInfo, setPurchaseInfo] = useState({...purchase});
-  const rowRef = useRef<HTMLInputElement>(null)
+  const {rowRef,editable,setEditable} = useRowFocusForm()
 
-  useEffect(() => {
-    if (editable && rowRef.current) {
-      rowRef.current.focus();
-    }
-  }, [editable]);
+  // const [purchasesInfo, handleChange] = useHandleChange<PurchasesData>({...purchase})
 
   const handleEdit = (e:FormEvent)=>{
     e.preventDefault();

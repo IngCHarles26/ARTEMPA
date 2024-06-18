@@ -5,8 +5,8 @@ const {personnel_data,create_account,edit_password} = appRoutes
 export const admMenu:RouteMenu[] = [
   {
     image: (hover:boolean) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={"icon icon-tabler icon-tabler-report-money w-full transition-all "
-        +( hover ? 'stroke-cyan-500' : 'stroke-neutral-500' )
+      <svg xmlns="http://www.w3.org/2000/svg" className={"w-9 transition-all "
+        +( hover ? 'stroke-yellow-300 stroke-[1.5]' : 'stroke-white' )
       } viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -22,8 +22,8 @@ export const admMenu:RouteMenu[] = [
   },
   {
     image: (hover:boolean) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={"icon icon-tabler icon-tabler-report-money w-full transition-all "
-        +( hover ? 'stroke-cyan-500' : 'stroke-neutral-500' )
+      <svg xmlns="http://www.w3.org/2000/svg" className={"w-9 transition-all "
+        +( hover ? 'stroke-yellow-300 stroke-[1.5]' : 'stroke-white' )
       } viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -37,8 +37,8 @@ export const admMenu:RouteMenu[] = [
   },
   {
     image: (hover:boolean) => (
-      <svg xmlns="http://www.w3.org/2000/svg" className={"icon icon-tabler icon-tabler-report-money w-full transition-all "
-        +( hover ? 'stroke-cyan-500' : 'stroke-neutral-500' )
+      <svg xmlns="http://www.w3.org/2000/svg" className={"w-9 transition-all "
+        +( hover ? 'stroke-yellow-300 stroke-[1.5]' : 'stroke-white' )
       } viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M10.17 6.159l2.316 -2.316a2.877 2.877 0 0 1 4.069 0l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.33 2.33" />

@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { SuppliersData } from "../../../types";
+import useRowFocusForm from "../../../hooks/useRowFocusForm";
+import useHandleChange from "../../../hooks/useHandleChange";
 
 
 
@@ -12,27 +14,12 @@ interface Props {
 
 function FormRowSuppliers(props:Props) {
   const {supplier,widths:w,minWidths:mW,align:al} = props
-  const [editable, setEditable] = useState(false);
-  const [supplierInfo, setSupplierInfo] = useState({...supplier});
-  const rowRef = useRef<HTMLInputElement>(null)
-
-  useEffect(() => {
-    if (editable && rowRef.current) {
-      rowRef.current.focus();
-    }
-  }, [editable]);
+  const {rowRef,editable, setEditable} = useRowFocusForm()  
+  const [supplierInfo, handleChange] = useHandleChange<SuppliersData>({...supplier})
 
   const handleEdit = (e:FormEvent)=>{
     e.preventDefault();
     setEditable(!editable)
-  }
-
-  const handleChange = (e:ChangeEvent<HTMLInputElement>)=>{
-    const {name,value} = e.target
-    setSupplierInfo((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
   }
 
   return (
