@@ -3,6 +3,9 @@ import appRoutes, { RouteMenu } from "../../assets/routesAll";
 import ExitOpt from "./ExitOpt";
 import NavBarOpt from "./NavBarOpt";
 import UserOpt from "./UserOpt";
+import { useSelector } from "react-redux";
+import { TypeStore } from "../../redux/store";
+import useWindowSize from "../../hooks/useWindowSize";
 
 interface Props {
   menuOptions: RouteMenu[],
@@ -13,11 +16,13 @@ function Navbar(props:Props) {
   const { menuOptions, userName } = props
   const { accountant } = appRoutes
   const { pathname } = useLocation()
-
-  console.log(pathname)
+  const { menuHidden } = useSelector((st:TypeStore)=> st.style)
+  const { width } = useWindowSize()
 
   return (
-    <div className="bg-cyan-800 p-2 flex flex-col justify-between relative">
+    <div className={`bg-cyan-800 p-2 flex-col justify-between relative 
+        ${menuHidden && width<700 ? 'hidden' : 'flex'}
+      `}>
 
       <div className="flex flex-col gap-1 ">
 
@@ -47,7 +52,7 @@ function Navbar(props:Props) {
 
         <ExitOpt />   
       </div>
-      
+
     </div>
   );
 }

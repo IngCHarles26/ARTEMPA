@@ -20,7 +20,7 @@ function UserOpt(props:Props) {
       </svg>
 
       {
-        hover &&  <p className="uppercase absolute left-14 bg-yellow-300 text-neutral-800 px-2 py-1 rounded text-sm">{userName}</p>
+        hover &&  <p className="uppercase absolute left-14 bg-yellow-300 text-neutral-800 px-2 py-1 rounded text-xl">{userName}</p>
       }
     </div>
   );

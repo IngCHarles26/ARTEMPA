@@ -72,12 +72,12 @@ function Purchases() {
   }
 
   return (
-    <div className="flex-grow flex flex-col justify-start overflow-x-scroll px-4 pt-4 w-full">
+    <div className="flex-grow flex flex-col justify-start w-full">
 
     {/* __________________ TABLE HEADER  */}
 
       <form action=""
-        className="flex justify-start items-center border-b-2 rounded-t-xl border-stone-950 bg-neutral-700">
+        className="flex justify-start items-center border-b-2 border-stone-950 bg-neutral-700">
         
         <button 
           onClick={handleClick}
@@ -169,7 +169,7 @@ function Purchases() {
     
     {/* __________________ TABLE PAGINATION */}
     
-      <div className="flex-grow flex items-end justify-center mb-4" >
+      <div className="flex-grow flex items-end justify-center mb-2" >
 
         <PageNav pages={10}/>  
 
