@@ -17,6 +17,7 @@ const unSelectedColor = 'bg-transparent'
 function FormRowSuppliers(props:Props) {
   const {supplier,widths:w,minWidths:mW,align:al} = props
   const {rowRef,editable, setEditable} = useRowFocusForm()  
+  const [hover, setHover] = useState(false);
   const [supplierInfo, handleChange] = useHandleChange<SuppliersData>({...supplier})
 
   const handleEdit = (e:FormEvent)=>{
@@ -31,12 +32,16 @@ function FormRowSuppliers(props:Props) {
         
         <button
           onClick={handleEdit}
-          className={`
+          onMouseEnter={()=>setHover(true)}
+          onMouseLeave={()=>setHover(false)}
+          className={`relative 
             ${w[0]} ${mW[0]} ${al[0]} ${(!editable? unSelectedColor : selectedColor)}`}>
 
-            <p className={`hover:scale-125 transition-all`}>
+            <p className={`hover:scale-125 transition-all z-0`}>
               {editable ? '💾' : '✏'}
             </p>
+
+            {hover && <p className="uppercase absolute left-3 -bottom-8 bg-slate-500 text-white px-2 py-1 rounded text-sm w-auto text-nowrap font-bold z-50">{editable ? 'guardar' : 'editar'}</p>}
         </button>
         
         <input 

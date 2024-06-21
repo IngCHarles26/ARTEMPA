@@ -19,6 +19,7 @@ const unSelectedColor = 'bg-transparent'
 function FormRowPurchases(props:Props) {
   const {purchase,widths:w,minWidths:mW,align:al} = props
   const [purchaseInfo, setPurchaseInfo] = useState({...purchase});
+  const [hover, setHover] = useState(false);
   const {rowRef,editable,setEditable} = useRowFocusForm()
 
   // const [purchasesInfo, handleChange] = useHandleChange<PurchasesData>({...purchase})
@@ -43,12 +44,16 @@ function FormRowPurchases(props:Props) {
         
         <button
           onClick={handleEdit}
-          className={`
+          onMouseEnter={()=>setHover(true)}
+          onMouseLeave={()=>setHover(false)}
+          className={`relative 
             ${w[0]} ${mW[0]} ${al[0]} ${(!editable? unSelectedColor : selectedColor)}`}>
 
-            <p className={`hover:scale-125 transition-all`}>
+            <p className={`hover:scale-125 transition-all z-0`}>
               {editable ? '💾' : '✏'}
             </p>
+
+            {hover && <p className="uppercase absolute left-3 -bottom-8 bg-slate-500 text-white px-2 py-1 rounded text-sm w-auto text-nowrap font-bold z-50">{editable ? 'guardar' : 'editar'}</p>}
         </button>
         
         <input 
@@ -57,7 +62,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.company}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 input-no-spinner
+          className={`py-0.5 px-1
             ${w[1]} ${mW[1]} ${al[1]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -68,7 +73,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.date}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 input-no-spinner
+          className={`py-0.5 px-1 input-no-spinner
             ${w[2]} ${mW[2]} ${al[2]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -78,7 +83,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.ruc}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 input-no-spinner
+          className={`py-0.5 px-1 
             ${w[3]} ${mW[3]} ${al[3]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -88,7 +93,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.name}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 
+          className={`py-0.5 px-1 
             ${w[4]} ${mW[4]} ${al[4]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -98,7 +103,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.serial}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 cursor-text
+          className={`py-0.5 px-1 cursor-text
             ${w[5]} ${mW[5]} ${al[5]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -108,7 +113,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.number}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 cursor-text
+          className={`py-0.5 px-1 cursor-text
             ${w[6]} ${mW[6]} ${al[6]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -118,7 +123,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.amount}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 cursor-text
+          className={`py-0.5 px-1 cursor-text
             ${w[7]} ${mW[7]} ${al[7]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -128,7 +133,7 @@ function FormRowPurchases(props:Props) {
           checked={purchaseInfo.paid}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 h-4 mt-2
+          className={`py-0.5 px-1 h-4 mt-1
             ${w[8]} ${mW[8]} ${al[8]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -138,7 +143,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.paidMethod}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 uppercase
+          className={`py-0.5 px-1 uppercase
             ${w[9]} ${mW[9]} ${al[9]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
@@ -148,7 +153,7 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.detraction}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 
+          className={`py-0.5 px-1 
             ${w[10]} ${mW[10]} ${al[10]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
 

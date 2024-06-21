@@ -7,6 +7,7 @@ import { TypeStore } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { addNewClient } from "../../redux/slices/clientsSlice";
 import FormRowClients from "./mini-components/FormRowClients";
+import { tableComponent } from "../../assets/styles";
 
 export interface ClientData {
   ruc: string,
@@ -32,16 +33,16 @@ function ClientsData() {
   }
 
   return (
-    <div className="flex-grow flex flex-col justify-start  overflow-x-scroll md:overflow-x-auto ">
+    <div className={`${tableComponent.div} `}>
 
     {/* _______________ TABLE HEADER */}
 
       <form 
-        className={`flex justify-start items-center md:border-b-2 border-stone-100`}>
+        className={`${tableComponent.form}`}>
         
         <button 
           onClick={handleClick}
-          className={`transition-all bg-neutral-700 flex items-start justify-center hover:opacity-90
+          className={`${tableComponent.button}
             ${widths[0]} ${minWidths[0]} `}>
 
             <p className={`text-center text-white text-3xl font-extrabold mb-1 hover:scale-125 `}>+</p>
@@ -51,29 +52,29 @@ function ClientsData() {
         <input 
           type="text" 
           placeholder="RUC"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90 
+          className={`${tableComponent.input} 
             ${widths[1]} ${minWidths[1]} `}/>
         
         <input 
           type="text" 
           placeholder="RAZON SOCIAL"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90  
+          className={`${tableComponent.input}  
             ${widths[2]} ${minWidths[2]} `}/>
 
         <input 
           type="text" 
           placeholder="DIRECCIÓN"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90 
+          className={`${tableComponent.input} 
             ${widths[3]} ${minWidths[3]} `}/>
         <input 
           type="text" 
           placeholder="ABM"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90 
+          className={`${tableComponent.input} 
             ${widths[4]} ${minWidths[4]} `}/>
         <input 
           type="text" 
           placeholder="MEGA"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90
+          className={`${tableComponent.input}
             ${widths[5]} ${minWidths[5]} `}/>
 
       </form>

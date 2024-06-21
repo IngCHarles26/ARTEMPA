@@ -35,14 +35,8 @@ import PageNav from "../mini-components/PageNav";
 import { dataPurchases } from "../../assets/dataHelp";
 import { fDiv } from "../../assets/helpers";
 import FormRowPurchases from "./mini-components/FormRowPurchases";
+import { tableComponent } from "../../assets/styles";
 
-
-/*
-  1. Crear un slice que guarda una lista de cambios de valores en las filas
-  2. 
-
-
-*/
 
 export interface PurchasesData {
   company: string,
@@ -57,11 +51,17 @@ export interface PurchasesData {
   detraccion: string,
 }
 
+/*
+  notas
+    cambiar la detraccion a tipo booleano y na
+    
+*/
+
 function Purchases() {
-  //                 +                ABM/MEGA         FECHA        RUC           NOMBRE          SERIE         NUMERO          COSTO           ESTADO          OPERACION       DETRACCION
-  const widths    = ['w-1/36'       ,'w-2/36'       ,'w-4/36'     ,'w-4/36'     ,'w-6/36'       ,'w-3/36'     ,'w-4/36'       ,'w-3/36'       ,'w-3/36'       ,'w-3/36'       ,'w-3/36'       ]
-  const minWidths = ['min-w-12'     ,'min-w-12'     ,'min-w-12'   ,'min-w-12'   ,'min-w-12'     ,'min-w-12'   ,'min-w-12'     ,'min-w-12'     ,'min-w-12'     ,'min-w-12'     ,'min-w-12'     ]
-  const aligns    = ['text-center'  ,'text-center'  ,'text-left'  ,'text-center','text-left'    ,'text-center','text-center'  ,'text-center'  ,'text-center'  ,'text-center'  ,'text-center'  ]
+  //                 +             ABM/MEGA       FECHA        RUC           NOMBRE       SERIE         NUMERO          COSTO           PAGO          OPERACION       DETRACCION
+  const widths    = ['w-1/48'     ,'w-3/48'     ,'w-4/48'     ,'w-5/48'     ,'w-9/48'   ,'w-3/48'     ,'w-5/48'       ,'w-4/48'       ,'w-3/48'       ,'w-5/48'       ,'w-5/48'       ]
+  const minWidths = ['min-w-10'   ,'min-w-16'   ,'min-w-32'   ,'min-w-36'   ,'min-w-60' ,'min-w-16'   ,'min-w-28'     ,'min-w-24'     ,'min-w-16'     ,'min-w-28'     ,'min-w-32'     ]
+  const aligns    = ['text-center','text-center','text-center','text-center','text-left','text-center','text-center'  ,'text-right'  ,'text-center'  ,'text-center'  ,'text-center'  ]
   const {height} =  useWindowSize()
 
   const [purchaseInfo, setPurchaseInfo] = useState([...dataPurchases]);
@@ -72,80 +72,80 @@ function Purchases() {
   }
 
   return (
-    <div className="flex-grow flex flex-col justify-start overflow-x-scroll md:overflow-x-auto ">
+    <div className={`${tableComponent.div} `}>
 
     {/* __________________ TABLE HEADER  */}
 
       <form action=""
-        className="flex justify-start items-center md:border-b-2 border-stone-100">
+        className={`${tableComponent.form}`}>
         
         <button 
           onClick={handleClick}
-          className={`transition-all bg-neutral-700 flex items-start justify-center hover:opacity-90
+          className={`${tableComponent.button}
             ${widths[0]} ${minWidths[0]}`}>
 
-            <p className={`text-center text-white text-4xl font-extrabold mb-2 hover:scale-125 h-full`}>+</p>
+            <p className={`text-center text-white text-3xl hover:font-extrabold h-full `}>+</p>
 
         </button>
         
         <input 
           type="EMPRESA"
           placeholder="ABM"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[1]} ${minWidths[1]}`}/>
         
         <input 
           type="text"
           placeholder="FECHA"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[2]} ${minWidths[2]}`}/>
         
         <input 
           type="text"
           placeholder="RUC"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[3]} ${minWidths[3]}`}/>
         
         <input 
           type="text"
           placeholder="NOMBRE"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[4]} ${minWidths[4]}`}/>
         
         <input 
           type="text"
           placeholder="SERIE"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[5]} ${minWidths[5]}`}/>
         
         <input 
           type="text"
           placeholder="NÚMERO"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[6]} ${minWidths[6]}`}/>
         
         <input 
           type="text"
           placeholder="COSTO"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[7]} ${minWidths[7]}`}/>
         
         <input 
           type="text"
-          placeholder="ESTADO"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          placeholder="PAGO"
+          className={`${tableComponent.input}    
             ${widths[8]} ${minWidths[8]}`}/>
         
         <input 
           type="text"
           placeholder="OPERACIÓN"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[9]} ${minWidths[9]}`}/>
         
         <input 
           type="text"
           placeholder="DETRACCIÓN"
-          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
+          className={`${tableComponent.input}    
             ${widths[10]} ${minWidths[10]}`}/>
 
       </form>
