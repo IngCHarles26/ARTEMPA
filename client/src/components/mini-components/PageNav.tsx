@@ -18,11 +18,11 @@ function PageNav(props:Props) {
   }
 
   return (
-    <div className="mt-1 flex justify-center items-center gap-5 ">
+    <div className="mt-1 flex justify-center items-center gap-2 ">
       
       <button 
         onClick={()=>{setCurrent(max(1,current-1))}}
-        className={"transition-all hover:scale-110 "+(current==1 && '-z-50')}>
+        className={"transition-all hover:scale-110 "+(current==1 && 'hidden')}>
         
         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-badge-left w-10 stroke-cyan-700 hover:stroke-cyan-800 stroke-2" viewBox="0 0 24 24" fill="none" strokeLinecap="round" strokeLinejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -31,7 +31,7 @@ function PageNav(props:Props) {
 
       </button>
 
-      <div className="flex gap-2" >
+      <div className="flex gap-2 h-full mb-2" >
 
         <p>Página: </p>
 

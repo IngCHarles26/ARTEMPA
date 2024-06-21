@@ -47,7 +47,7 @@ export const router = createBrowserRouter([
           
         ]},
         { path: office(''),
-        element: <Office />,
+          element: <Office />,
         children: [
           // { path: home,                 element: <HomeOffice />}, // menu de accesos directos para OFICINA
           { path: purchases,            element: <Purchases />}, // lista filtrable de compras y la opcion de añadir nuevas compras
@@ -60,6 +60,7 @@ export const router = createBrowserRouter([
           { path: services_register,    element: <ServicesRegister />}, // lista filtrable del cuaderno de datos de trabajo y la opcion de añadir un nuevo servicio
           { path: services_status,      element: <ServicesStatus />}, // lista filtrable para visualizar el estado de avance de los servicios
           { path: data_base,            element: <DataBase />}, // Lista filtrable de todos los servicios realizados
+          { path: statements,           element: <Statements />}, // lista filtrable de proveedores y la opcion de añadir un proveedor
           { path: budget(':id'),        element: <Budget />}, // Formato para crear un presupuesto y/o editarlo
           { path: service_data(':id'),  element: <ServiceData /> }, // Menu de opciones para ingresar a los datos de un servicio en proceso o realizado          
         ]},

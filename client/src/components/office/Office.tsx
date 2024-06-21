@@ -6,6 +6,7 @@ import Header from "../mini-components/Header";
 import ButtonHome from "../mini-components/ButtonHome";
 import Navbar from "../mini-components/NavBar";
 import { OffMenu } from ".";
+import appRoutes from "../../assets/routesAll";
 
 function Office() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function Office() {
   return (
     <>
       <Navbar 
+          routeUser={appRoutes.office}
           menuOptions = { OffMenu }
           userName = "Milton"
         />

@@ -10,6 +10,9 @@ interface Props {
   align: string[],
 }
 
+const selectedColor = 'bg-gray-300'
+const unSelectedColor = 'bg-transparent'
+
 function FormRowClients(props:Props) {
   const {client,widths:w,minWidths:mW,align:al} = props
   const {rowRef,editable, setEditable} = useRowFocusForm()
@@ -23,13 +26,13 @@ function FormRowClients(props:Props) {
 
   return (
     <form 
-      className={`border-gray-200 border-b-2 flex
-        ${(!editable?'bg-neutral-300':'bg-neutral-50')}`}>
+      className={`border-gray-500 border-b-2 flex 
+        ${(!editable? unSelectedColor : selectedColor)} ${!editable && 'hover:bg-slate-400'}`}>
         
         <button
           onClick={handleEdit}
           className={`
-            ${w[0]} ${mW[0]} ${al[0]} ${(!editable?'bg-neutral-300':'bg-neutral-50')}`}>
+            ${w[0]} ${mW[0]} ${al[0]} ${(!editable? unSelectedColor : selectedColor)}`}>
 
             <p className={`hover:scale-125 transition-all`}>
               {editable ? '💾' : '✏'}
@@ -43,8 +46,8 @@ function FormRowClients(props:Props) {
           value={clientInfo.ruc}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 cursor-text input-no-spinner
-            ${w[1]} ${mW[1]} ${al[1]} ${(!editable?'bg-neutral-300':'bg-neutral-50')} `}
+          className={`py-1 px-3 input-no-spinner
+            ${w[1]} ${mW[1]} ${al[1]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
         <input 
@@ -53,8 +56,8 @@ function FormRowClients(props:Props) {
           value={clientInfo.name}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 cursor-text 
-            ${w[2]} ${mW[2]} ${al[2]} ${(!editable?'bg-neutral-300':'bg-neutral-50')} `}
+          className={`py-1 px-3 
+            ${w[2]} ${mW[2]} ${al[2]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
         
         <input 
@@ -63,9 +66,30 @@ function FormRowClients(props:Props) {
           value={clientInfo.address}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 cursor-text
-            ${w[3]} ${mW[3]} ${al[3]} ${(!editable?'bg-neutral-300':'bg-neutral-50')} `}
+          className={`py-1 px-3
+            ${w[3]} ${mW[3]} ${al[3]} ${(!editable? unSelectedColor : selectedColor)} `}
           />
+
+        <input 
+          type="checkbox"
+          name='abm'
+          checked={clientInfo.abm}
+          disabled={!editable}
+          onChange={handleChange}
+          className={`py-1 px-3 h-4 mt-2  z-10
+            ${w[4]} ${mW[4]} ${al[4]} ${(!editable? unSelectedColor : selectedColor)} `}
+          />
+
+        <input 
+          type="checkbox"
+          name='mega'
+          checked={clientInfo.mega}
+          disabled={!editable}
+          onChange={handleChange}
+          className={`py-1 px-3 h-4 mt-2 z-10
+            ${w[5]} ${mW[5]} ${al[5]} ${(!editable? unSelectedColor : selectedColor)} `}
+          />
+
 
     </form>
   );

@@ -33,7 +33,7 @@ function SuppliersData() {
   }
 
   return (
-    <div className="flex-grow flex flex-col justify-start overflow-x-scroll md:overflow-x-auto min-w-16">
+    <div className="flex-grow flex flex-col justify-start overflow-x-scroll md:overflow-x-auto ">
 
     {/* __________________ TABLE HEADER */}
 
@@ -90,7 +90,7 @@ function SuppliersData() {
 
     {/*__________________ TABLE INFO  */}
 
-      <div>{
+      <div className="">{
 
         suppliersInfo.slice(0,fDiv(height,32)-6).map((supplier,ix)=>
           <FormRowSuppliers 
@@ -106,7 +106,7 @@ function SuppliersData() {
 
     {/* __________________ TABLE PAGINATION */}
 
-      <div className="flex-grow flex items-end justify-center mb-4" >
+      <div className="fixed bottom-4 right-1/4 md:right-1/2" >
 
         <PageNav pages={10}/>  
 

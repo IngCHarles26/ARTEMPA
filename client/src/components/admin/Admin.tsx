@@ -6,11 +6,12 @@ import Header from "../mini-components/Header";
 import { setCurrentNav, setNameUser, setTypeUser } from "../../redux/slices/userInfoSlice";
 import Navbar from "../mini-components/NavBar";
 import { AdmMenu } from ".";
+import appRoutes from "../../assets/routesAll";
 
 function Admin() {
   const dispatch = useDispatch();
   const {pathname} = useLocation()
-
+  
   useEffect(() => {
     dispatch(setTypeUser('admin'))
     dispatch(setCurrentNav('home'))
@@ -20,6 +21,7 @@ function Admin() {
   return (
     <>
       <Navbar
+        routeUser={appRoutes.admin}
         menuOptions = { AdmMenu }
         userName = "carlos"
 

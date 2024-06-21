@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentNav, setNameUser, setTypeUser } from "../../redux/slices/userInfoSlice";
 import Navbar from "../mini-components/NavBar";
 import { AccMenu } from ".";
+import appRoutes from "../../assets/routesAll";
 
 function Accountant() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Accountant() {
   return (
     <>
       <Navbar 
+          routeUser={appRoutes.accountant}
           menuOptions = { AccMenu }
           userName = "violeta"
         />

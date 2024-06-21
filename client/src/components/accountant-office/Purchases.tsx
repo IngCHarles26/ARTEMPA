@@ -72,80 +72,80 @@ function Purchases() {
   }
 
   return (
-    <div className="flex-grow flex flex-col justify-start w-full">
+    <div className="flex-grow flex flex-col justify-start overflow-x-scroll md:overflow-x-auto ">
 
     {/* __________________ TABLE HEADER  */}
 
       <form action=""
-        className="flex justify-start items-center border-b-2 border-stone-950 bg-neutral-700">
+        className="flex justify-start items-center md:border-b-2 border-stone-100">
         
         <button 
           onClick={handleClick}
-          className={`transition-all bg-transparent flex items-center justify-center w-1/36
+          className={`transition-all bg-neutral-700 flex items-start justify-center hover:opacity-90
             ${widths[0]} ${minWidths[0]}`}>
 
-            <p className={`text-center text-white text-3xl font-extrabold mb-1 hover:scale-125 h-full`}>+</p>
+            <p className={`text-center text-white text-4xl font-extrabold mb-2 hover:scale-125 h-full`}>+</p>
 
         </button>
         
         <input 
           type="EMPRESA"
           placeholder="ABM"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[1]} ${minWidths[1]}`}/>
         
         <input 
           type="text"
           placeholder="FECHA"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[2]} ${minWidths[2]}`}/>
         
         <input 
           type="text"
           placeholder="RUC"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[3]} ${minWidths[3]}`}/>
         
         <input 
           type="text"
           placeholder="NOMBRE"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[4]} ${minWidths[4]}`}/>
         
         <input 
           type="text"
           placeholder="SERIE"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[5]} ${minWidths[5]}`}/>
         
         <input 
           type="text"
           placeholder="NÚMERO"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[6]} ${minWidths[6]}`}/>
         
         <input 
           type="text"
           placeholder="COSTO"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[7]} ${minWidths[7]}`}/>
         
         <input 
           type="text"
           placeholder="ESTADO"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[8]} ${minWidths[8]}`}/>
         
         <input 
           type="text"
           placeholder="OPERACIÓN"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[9]} ${minWidths[9]}`}/>
         
         <input 
           type="text"
           placeholder="DETRACCIÓN"
-          className={`text-center p-1 bg-transparent placeholder:text-neutral-100 outline-none border-l-2 text-white font-bold   
+          className={`text-center p-2 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90   
             ${widths[10]} ${minWidths[10]}`}/>
 
       </form>
@@ -169,7 +169,7 @@ function Purchases() {
     
     {/* __________________ TABLE PAGINATION */}
     
-      <div className="flex-grow flex items-end justify-center mb-2" >
+      <div className="fixed bottom-4 right-1/4 md:right-1/2" >
 
         <PageNav pages={10}/>  
 

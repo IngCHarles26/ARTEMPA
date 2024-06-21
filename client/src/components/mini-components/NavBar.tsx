@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import appRoutes, { RouteMenu } from "../../assets/routesAll";
+import { RouteMenu } from "../../assets/routesAll";
 import ExitOpt from "./ExitOpt";
 import NavBarOpt from "./NavBarOpt";
 import UserOpt from "./UserOpt";
@@ -9,12 +9,12 @@ import useWindowSize from "../../hooks/useWindowSize";
 
 interface Props {
   menuOptions: RouteMenu[],
-  userName: string
+  userName: string,
+  routeUser: (rt: string) => string
 }
 
 function Navbar(props:Props) {
-  const { menuOptions, userName } = props
-  const { accountant } = appRoutes
+  const { menuOptions, userName ,routeUser} = props
   const { pathname } = useLocation()
   const { menuHidden } = useSelector((st:TypeStore)=> st.style)
   const { width } = useWindowSize()
@@ -32,7 +32,7 @@ function Navbar(props:Props) {
 
         {
           menuOptions.map(({image,name,route},ix)=>{
-            const toRoute = `/${accountant(route)}`
+            const toRoute = `/${routeUser(route)}`
 
             return(
               <NavBarOpt

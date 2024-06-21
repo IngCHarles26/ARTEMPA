@@ -6,6 +6,7 @@ import Header from "../mini-components/Header";
 import { setCurrentNav, setNameUser, setTypeUser } from "../../redux/slices/userInfoSlice";
 import Navbar from "../mini-components/NavBar";
 import { TechMenu } from ".";
+import appRoutes from "../../assets/routesAll";
 
 
 function Technician() {
@@ -21,6 +22,7 @@ function Technician() {
   return (
     <>
       <Navbar 
+          routeUser={appRoutes.technician}
           menuOptions = { TechMenu }
           userName = "Delford"
         />
