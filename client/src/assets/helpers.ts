@@ -17,3 +17,6 @@ export const transformInfo2Obj = (titles:string[],values:any[])=>{
 }
 
 export const fDiv = (a:number,b:number)=> Math.floor(a/b)
+
+
+export const monthToText = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];

@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Outlet, useLocation } from "react-router-dom";
-import ButtonHome from "../mini-components/ButtonHome";
-import Header from "../mini-components/Header";
+import { Outlet } from "react-router-dom";
 import { setCurrentNav, setNameUser, setTypeUser } from "../../redux/slices/userInfoSlice";
 import Navbar from "../mini-components/NavBar";
 import { AdmMenu } from ".";
@@ -10,7 +8,6 @@ import appRoutes from "../../assets/routesAll";
 
 function Admin() {
   const dispatch = useDispatch();
-  const {pathname} = useLocation()
   
   useEffect(() => {
     dispatch(setTypeUser('admin'))

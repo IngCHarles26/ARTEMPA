@@ -16,10 +16,24 @@ export interface ClientData {
 }
 
 function ClientsData() {
-  //                  +               RUC             RAZON         DIRECCION       ABM             MEGA
-  const widths    = [ 'w-1/12'      ,'w-2/12'       ,'w-3/12'     ,'w-4/12'    , 'w-1/12'       , 'w-1/12'      ]
-  const minWidths = [ 'min-w-14'    ,'min-w-32'     ,'min-w-52'   ,'min-w-64'  , 'min-w-14'     , 'min-w-14'    ]
-  const aligns    = [ 'text-center' ,'text-center'  ,'text-left'  ,'text-left' , 'text-center'  , 'text-center' ]
+  //                  +                   RUC                 RAZON               DIRECCION           ABM               MEGA
+  const widths    = [ 
+    'min-w-10 md:w-1/48'  , // +
+    'min-w-32 md:w-5/48'  , // RUC
+    'min-w-72 md:w-18/48' , // RAZON
+    'min-w-80 md:w-16/48' , // DIRECCION
+    'min-w-14 md:w-4/48'  , // ABM
+    'min-w-14 md:w-4/48'  , // MEGA
+  ]
+  const aligns    = [ 
+    'text-center' , // + 
+    'text-center' , // RUC
+    'text-left'   , // RAZON
+    'text-left'   , // DIRECCION 
+    'text-center' , // ABM 
+    'text-center' , // MEGA
+  ]
+  const minWidths = [ 'min--10'    ,'min--32'     ,'min--52'   ,'min--64'  , 'min--14'     , 'min--14'    ]
   const {height} =  useWindowSize()
 
   const clientsInfo = useSelector((st:TypeStore)=>st.clients);
@@ -40,14 +54,12 @@ function ClientsData() {
       <form 
         className={`${tableComponent.form}`}>
         
-        <button 
-          onClick={handleClick}
-          className={`${tableComponent.button}
-            ${widths[0]} ${minWidths[0]} `}>
-
-            <p className={`text-center text-white text-3xl font-extrabold mb-1 hover:scale-125 `}>+</p>
-
-          </button>
+        <input 
+          type="string"
+          placeholder=""
+          disabled={true}
+          className={`${tableComponent.msg}    
+            ${widths[0]}`}/>
 
         <input 
           type="text" 
@@ -81,7 +93,7 @@ function ClientsData() {
 
     {/* _______________ TABLE CONTENT  */}
 
-      <div className="">{
+      <div className="flex flex-col">{
 
         clientsInfo.slice(0,fDiv(height,32)-6).map((client,ix)=>
           <FormRowClients 

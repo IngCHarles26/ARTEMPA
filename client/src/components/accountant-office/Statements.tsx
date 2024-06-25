@@ -10,11 +10,81 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { dataStatementsAbm, dataStatementsMega } from "../../assets/dataHelp";
 import { logoAbm, logoMega } from "../../assets/images/images";
+import { TypeStore } from "../../redux/store";
+import { useSelector } from "react-redux";
+import useWindowSize from "../../hooks/useWindowSize";
+import { tableComponent } from "../../assets/styles";
+import { fDiv } from "../../assets/helpers";
+import FormRowStatements from "./mini-components/FormRowStatements";
+import PageNav from "../mini-components/PageNav";
 
 const meses = [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
 function Statements() {
-  const [statesAbm, setStatesAbm] = useState<typeof dataStatementsAbm>([]);
+  const widths = [
+    'w-12/48', // company 
+    'w-12/48', // month
+    'w-12/48', // year
+    'w-12/48', // link
+  ]
+  const aligns = [
+    'text-center ', // company 
+    'text-center ', // month
+    'text-center ', // year
+    'text-center ', // link
+  ]
+
+  const {height} = useWindowSize()
+  const statementsInfo = useSelector((st:TypeStore)=>st.statements)
+
+  return (
+    <div className={`${tableComponent.div}`}>
+
+      {/* __________________ TABLE HEADER  */}
+
+        <form action=""
+          className={`${tableComponent.form}`}>
+          
+          <input type="text" placeholder="ABM" className={`${tableComponent.msg} ${widths[0]}`}/>
+
+          <input type="text" placeholder="MES" className={`${tableComponent.input} ${widths[1]}`}/>
+
+          <input type="text" placeholder="AÑO" className={`${tableComponent.input} ${widths[2]}`}/>
+
+          <input type="text" placeholder="ENLACE" className={`${tableComponent.input} ${widths[3]}`}/>
+
+        </form>
+
+      {/* __________________ TABLE INFO */}
+
+        <div className={`${tableComponent.formContainer}`}>{
+            statementsInfo.slice(0,fDiv(height,32)-6).map( (statement,ix)=>
+              <FormRowStatements
+                key={ix+'_formRow'}
+                statement={statement}
+                widths={widths}
+                align={aligns}
+              />
+            )
+          }
+        </div>
+
+      {/* __________________ TABLE PAGINATION */}
+
+      <div className="fixed bottom-4 right-1/4 md:right-1/2" >
+
+        <PageNav pages={10}/>  
+
+      </div>
+
+    </div>
+  );
+}
+
+export default Statements;
+
+/*
+const [statesAbm, setStatesAbm] = useState<typeof dataStatementsAbm>([]);
   const [statesMega, setStatesMega] = useState<typeof dataStatementsAbm>([]);
 
 
@@ -104,6 +174,4 @@ function Statements() {
       
     </div>
   );
-}
-
-export default Statements;
+*/

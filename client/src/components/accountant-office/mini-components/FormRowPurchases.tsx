@@ -1,26 +1,29 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { PurchasesData } from "../../../types";
 import useRowFocusForm from "../../../hooks/useRowFocusForm";
-import useHandleChange from "../../../hooks/useHandleChange";
+import { rowFormTable, rowFormTableColor } from "../../../assets/styles";
 
 
 
 interface Props {
   purchase: PurchasesData,
   widths: string[],
-  minWidths: string[],
   align: string[],
 }
 
 
-const selectedColor = 'bg-gray-300'
-const unSelectedColor = 'bg-transparent'
-
 function FormRowPurchases(props:Props) {
-  const {purchase,widths:w,minWidths:mW,align:al} = props
+  const {purchase,widths:w,align:al} = props
   const [purchaseInfo, setPurchaseInfo] = useState({...purchase});
-  const [hover, setHover] = useState(false);
+  const [editHover, setEditHover] = useState(false);
+  const [rowHover, setRowHover] = useState(false);
   const {rowRef,editable,setEditable} = useRowFocusForm()
+
+  const bg = editable 
+              ? rowFormTableColor.selected 
+              : rowHover 
+                ? rowFormTableColor.hover 
+                : rowFormTableColor.unselected
 
   // const [purchasesInfo, handleChange] = useHandleChange<PurchasesData>({...purchase})
 
@@ -39,21 +42,21 @@ function FormRowPurchases(props:Props) {
 
   return (
     <form 
-      className={`border-gray-500 border-b-2 flex 
-        ${(!editable? unSelectedColor : selectedColor)} ${!editable && 'hover:bg-slate-400'}`}>
+      onMouseEnter={()=>setRowHover(true)}
+      onMouseLeave={()=>setRowHover(false)}
+      className={`${rowFormTable.form} ${bg}`}>
         
         <button
           onClick={handleEdit}
-          onMouseEnter={()=>setHover(true)}
-          onMouseLeave={()=>setHover(false)}
-          className={`relative 
-            ${w[0]} ${mW[0]} ${al[0]} ${(!editable? unSelectedColor : selectedColor)}`}>
+          onMouseEnter={()=>setEditHover(true)}
+          onMouseLeave={()=>setEditHover(false)}
+          className={`${rowFormTable.input} ${w[0]} ${al[0]} ${bg}`}>
 
-            <p className={`hover:scale-125 transition-all z-0`}>
+            <p className={`${rowFormTable.button} ${w[0]} `}>
               {editable ? '💾' : '✏'}
             </p>
 
-            {hover && <p className="uppercase absolute left-3 -bottom-8 bg-slate-500 text-white px-2 py-1 rounded text-sm w-auto text-nowrap font-bold z-50">{editable ? 'guardar' : 'editar'}</p>}
+            {editHover && <p className={`${rowFormTable.popUp}`}>{editable ? 'guardar' : 'editar'}</p>}
         </button>
         
         <input 
@@ -62,8 +65,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.company}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1
-            ${w[1]} ${mW[1]} ${al[1]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} uppercase
+            ${w[1]} ${al[1]} ${bg} `}
           />
         
         <input 
@@ -73,8 +76,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.date}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 input-no-spinner
-            ${w[2]} ${mW[2]} ${al[2]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input}
+            ${w[2]} ${al[2]} ${bg} `}
           />
         
         <input 
@@ -83,8 +86,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.ruc}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 
-            ${w[3]} ${mW[3]} ${al[3]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[3]} ${al[3]} ${bg} `}
           />
         
         <input 
@@ -93,8 +96,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.name}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 
-            ${w[4]} ${mW[4]} ${al[4]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[4]} ${al[4]} ${bg} `}
           />
         
         <input 
@@ -103,8 +106,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.serial}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 cursor-text
-            ${w[5]} ${mW[5]} ${al[5]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[5]} ${al[5]} ${bg} `}
           />
         
         <input 
@@ -113,8 +116,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.number}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 cursor-text
-            ${w[6]} ${mW[6]} ${al[6]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[6]} ${al[6]} ${bg} `}
           />
         
         <input 
@@ -123,18 +126,18 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.amount}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 cursor-text
-            ${w[7]} ${mW[7]} ${al[7]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[7]} ${al[7]} ${bg} `}
           />
         
         <input 
-          type="checkbox"
+          type="string"
           name='paid'
-          checked={purchaseInfo.paid}
+          value={purchaseInfo.paid ? 'X' : ''}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 h-4 mt-1
-            ${w[8]} ${mW[8]} ${al[8]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input}
+            ${w[8]} ${al[8]} ${bg} `}
           />
         
         <input 
@@ -143,8 +146,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.paidMethod}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 uppercase
-            ${w[9]} ${mW[9]} ${al[9]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} uppercase
+            ${w[9]} ${al[9]} ${bg} `}
           />
         
         <input 
@@ -153,8 +156,8 @@ function FormRowPurchases(props:Props) {
           value={purchaseInfo.detraction}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-0.5 px-1 
-            ${w[10]} ${mW[10]} ${al[10]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[10]} ${al[10]} ${bg} `}
           />
 
     </form>

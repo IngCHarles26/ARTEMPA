@@ -47,7 +47,7 @@ function Navbar(props:Props) {
         }
       </div>
 
-      <div>
+      <div className="z-50">
         {/* <TextSizeHandler /> */}
 
         <ExitOpt />   

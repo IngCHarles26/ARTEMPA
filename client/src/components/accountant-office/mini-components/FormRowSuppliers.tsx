@@ -1,7 +1,8 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { SuppliersData } from "../../../types";
 import useRowFocusForm from "../../../hooks/useRowFocusForm";
 import useHandleChange from "../../../hooks/useHandleChange";
+import { rowFormTable, rowFormTableColor } from "../../../assets/styles";
 
 interface Props {
   supplier: SuppliersData,
@@ -10,14 +11,11 @@ interface Props {
   align: string[],
 }
 
-const selectedColor = 'bg-gray-300'
-const unSelectedColor = 'bg-transparent'
-
-
 function FormRowSuppliers(props:Props) {
   const {supplier,widths:w,minWidths:mW,align:al} = props
   const {rowRef,editable, setEditable} = useRowFocusForm()  
-  const [hover, setHover] = useState(false);
+  const [editHover, setEditHover] = useState(false);
+  const [rowHover, setRowHover] = useState(false);
   const [supplierInfo, handleChange] = useHandleChange<SuppliersData>({...supplier})
 
   const handleEdit = (e:FormEvent)=>{
@@ -25,23 +23,28 @@ function FormRowSuppliers(props:Props) {
     setEditable(!editable)
   }
 
+  const bg = editable 
+              ? rowFormTableColor.selected 
+              : rowHover 
+                ? rowFormTableColor.hover 
+                : rowFormTableColor.unselected
+
   return (
     <form 
-      className={`border-gray-500 border-b-2 flex hover:bg-slate-400
-        ${(!editable? unSelectedColor : selectedColor)}`}>
+      onMouseEnter={()=>setRowHover(true)}  
+      onMouseLeave={()=>setRowHover(false)} 
+      className={`${rowFormTable.form} ${bg}`}>
         
         <button
           onClick={handleEdit}
-          onMouseEnter={()=>setHover(true)}
-          onMouseLeave={()=>setHover(false)}
-          className={`relative 
-            ${w[0]} ${mW[0]} ${al[0]} ${(!editable? unSelectedColor : selectedColor)}`}>
+          onMouseEnter={()=>setEditHover(true)}
+          onMouseLeave={()=>setEditHover(false)}
+          className={`${rowFormTable.input} ${w[0]} ${mW[0]} ${al[0]} ${bg}`}>
 
-            <p className={`hover:scale-125 transition-all z-0`}>
+            <p className={`${rowFormTable.button} ${w[0]}`}>
               {editable ? '💾' : '✏'}
             </p>
-
-            {hover && <p className="uppercase absolute left-3 -bottom-8 bg-slate-500 text-white px-2 py-1 rounded text-sm w-auto text-nowrap font-bold z-50">{editable ? 'guardar' : 'editar'}</p>}
+            {editHover && <p className={`${rowFormTable.popUp}`}>{editable ? 'guardar' : 'editar'}</p>}
         </button>
         
         <input 
@@ -51,8 +54,7 @@ function FormRowSuppliers(props:Props) {
           value={supplierInfo.ruc}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 input-no-spinner
-            ${w[1]} ${mW[1]} ${al[1]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} ${w[1]} ${mW[1]} ${al[1]} ${bg} `}
           />
         
         <input 
@@ -61,8 +63,8 @@ function FormRowSuppliers(props:Props) {
           value={supplierInfo.name}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3 
-            ${w[2]} ${mW[2]} ${al[2]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input}  
+            ${w[2]} ${mW[2]} ${al[2]} ${bg} `}
           />
         
         <input 
@@ -71,8 +73,8 @@ function FormRowSuppliers(props:Props) {
           value={supplierInfo.address}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3
-            ${w[3]} ${mW[3]} ${al[3]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[3]} ${mW[3]} ${al[3]} ${bg} `}
           />
         
         <input 
@@ -81,8 +83,8 @@ function FormRowSuppliers(props:Props) {
           value={supplierInfo.phone}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3
-            ${w[4]} ${mW[4]} ${al[4]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[4]} ${mW[4]} ${al[4]} ${bg} `}
           />
         
         <input 
@@ -91,8 +93,8 @@ function FormRowSuppliers(props:Props) {
           value={supplierInfo.email}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3
-            ${w[5]} ${mW[5]} ${al[5]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[5]} ${mW[5]} ${al[5]} ${bg} `}
           />
         
         <input 
@@ -101,8 +103,8 @@ function FormRowSuppliers(props:Props) {
           value={supplierInfo.bankAccount}
           disabled={!editable}
           onChange={handleChange}
-          className={`py-1 px-3
-            ${w[6]} ${mW[6]} ${al[6]} ${(!editable? unSelectedColor : selectedColor)} `}
+          className={`${rowFormTable.input} 
+            ${w[6]} ${mW[6]} ${al[6]} ${bg} `}
           />
 
     </form>

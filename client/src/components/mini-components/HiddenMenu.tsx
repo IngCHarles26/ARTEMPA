@@ -16,7 +16,7 @@ function HiddenMenu() {
   return (
     <button 
       onClick={handleClick}
-      className={`fixed bottom-0 stroke-neutral-800 stroke-2  m-2 transition-all hover:scale-110
+      className={`fixed bottom-0 stroke-neutral-800 stroke-2  m-2 transition-all hover:scale-110 z-20
         ${ width > 700 ? 'hidden' : ''} ${ menuHidden ? 'left-0' : 'left-14'}
       `}>
       {

@@ -18,9 +18,25 @@ export interface SupplierData {
 
 function SuppliersData() {
   //                  +                 RUC             RAZON         DIRECCION     TELEFONO        EMAIL         PAGO
-  const widths    = [ 'w-1/24'        ,'w-3/24'       ,'w-5/24'     ,'w-5/24'     ,'w-2/24'       ,'w-4/24'     ,'w-4/24'       ]
-  const minWidths = [ 'min-w-14'      ,'min-w-32'     ,'min-w-52'   ,'min-w-64'   ,'min-w-32'     ,'min-w-52'   ,'min-w-52'     ]
-  const aligns    = [ 'text-center'   ,'text-center'  ,'text-left'  ,'text-left'  ,'text-center'  ,'text-left'  ,'text-center'  ]
+  const widths    = [ 
+    'min-w-10 md:w-1/48'   , // +
+    'min-w-36 md:w-5/48'   , // RUC
+    'min-w-64 md:w-10/48'  , // RAZON
+    'min-w-64 md:w-9/48'   , // DIRECCION
+    'min-w-32 md:w-6/48'   , // TELEFONO
+    'min-w-64 md:w-9/48'   , // EMAIL
+    'min-w-52 md:w-8/48'   , // PAGO
+  ]
+  const minWidths = [ 'min--10'      ,'min--36'     ,'min--60'   ,'min--64'   ,'min--32'     ,'min--52'   ,'min--52'     ]
+  const aligns    = [ 
+    'text-center' , // +
+    'text-center' , // RUC
+    'text-left'   , // RAZON
+    'text-left'   , // DIRECCION
+    'text-center' , // TELEFONO
+    'text-left'   , // EMAIL
+    'text-center' , // PAGO
+  ]
   const {height} =  useWindowSize()
 
 
@@ -41,57 +57,55 @@ function SuppliersData() {
       <form 
         className={`${tableComponent.form}`}>
 
-        <button 
-          onClick={handleClick}
-          className={`${tableComponent.button}
-            ${widths[0]} ${minWidths[0]}`}>
-
-            <p className={`text-center text-white text-4xl font-extrabold hover:scale-125 h-full  `}>+</p>
-
-        </button>
+        <input 
+          type="string"
+          placeholder=""
+          disabled={true}
+          className={`${tableComponent.msg}    
+            ${widths[0]}`}/>
 
         <input 
           type="text" 
           placeholder="RUC"
           className={`${tableComponent.input}
-            ${widths[1]} ${minWidths[1]}`}/>
+            ${widths[1]}`}/>
         
         <input 
           type="text" 
           placeholder="RAZON SOCIAL"
           className={`${tableComponent.input}
-            ${widths[2]} ${minWidths[2]}`}/>
+            ${widths[2]}`}/>
         
         <input 
           type="text" 
           placeholder="DIRECCIÓN"
           className={`${tableComponent.input}
-            ${widths[3]} ${minWidths[3]}`}/>
+            ${widths[3]}`}/>
         
         <input 
           type="text" 
           placeholder="TELÉFONO"
           className={`${tableComponent.input}
-            ${widths[4]} ${minWidths[4]}`}/>
+            ${widths[4]}`}/>
         
         <input 
           type="text" 
           placeholder="EMAIL"
           className={`${tableComponent.input}
-            ${widths[5]} ${minWidths[5]}`}/>
+            ${widths[5]}`}/>
         
         <input 
           type="text" 
           placeholder="CUENTA BANCO"
           className={`${tableComponent.input}
-            ${widths[6]} ${minWidths[6]}`}/>
+            ${widths[6]}`}/>
       
       </form>
       
 
     {/*__________________ TABLE INFO  */}
 
-      <div className="">{
+      <div className="flex flex-col">{
 
         suppliersInfo.slice(0,fDiv(height,32)-6).map((supplier,ix)=>
           <FormRowSuppliers 
