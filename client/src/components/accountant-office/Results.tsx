@@ -2,10 +2,14 @@ import { useState } from "react";
 import { tableComponent } from "../../assets/styles";
 import { monthToText } from "../../assets/helpers";
 
+const company = ['abm','mega','ambos']
+const bgCompany = ['bg-blue-600','bg-red-600','bg-green-700']
+
 const initialState = {
-  company: 'abm',
-  month: 6,
-  year: 2024,
+  company: 0,
+  month: -1,
+  year: -1,
+  monthSt: true,
 }
 
 
@@ -15,33 +19,47 @@ function Results() {
   
   return (
     <div className={`${tableComponent.div}`}>
-      <div className="w-full flex justify-start py-2 px-4 md:py-5 md:px-8 gap-2 md:text-xl">
+      <div className="w-full mt-3 flex justify-center">
 
-        <button className="bg-neutral-500 rounded px-5 py-1 text-white uppercase font-bold">
-          {info.company}
-        </button>
+        <div className="flex gap-1 md:gap-2 ">
 
-        <select className="bg-neutral-500 rounded px-2 py-1 text-white uppercase font-bold cursor-pointer">
-          <option value=""> - mes - </option>
-          {
-            monthToText.map((month,ix)=>
-              <option value={ix} key={ix+'_optMonth'} className="text-sm">{month}</option>
-            )
-          }
-        </select>
+          <button 
+            className="leading-4 w-24 md:w-32 text-xs md:text-base md:leading-5 px-3 py-2 bg-neutral-500 rounded text-red-100 tracking-widest uppercase font-bold hover:scale-105 transition-all hover:font-extrabold"
+            onClick={()=>setInfo({...info,monthSt:!info.monthSt})}
+            >
+            {info.monthSt ? 'Mensual' : 'Anual'}
+          </button>
 
-        <select className="bg-neutral-500 rounded px-2 py-1 text-white uppercase font-bold cursor-pointer">
-          <option value=""> - año - </option>
-          {
-            [2024,2023,2022,2021,2020].map((year,ix)=>
-              <option value={ix} key={ix+'_optYear'} className="text-sm">{year}</option>
-            )
-          }
-        </select>
+          <select className="leading-4 w-20 md:w-28 text-xs md:text-base md:leading-5 px-3 py-2 bg-neutral-500 rounded text-blue-100 bg-gre uppercase font-bold cursor-pointer">
+            <option value=""> - año - </option>
+            {
+              [2024,2023,2022,2021,2020].map((year,ix)=>
+                <option value={ix} key={ix+'_optYear'} className="text-sm">{year}</option>
+              )
+            }
+          </select>
 
-        <button className="bg-yellow-500 rounded px-2 py-1  uppercase font-bold hover:scale-110 transition-all">
-          reset
-        </button>
+          { info.monthSt && 
+          <select className="leading-4 w-28 md:w-32 text-xs md:text-base md:leading-5 px-3 py-2 bg-neutral-500 rounded text-green-100 uppercase font-bold cursor-pointer">
+              <option value="" > - mes - </option>
+              {
+                monthToText.map((month,ix)=>
+                  <option value={ix} key={ix+'_optMonth'} className="text-xs">{month}</option>
+                )
+              }
+          </select>}
+
+          <button className={`leading-4 w-16 md:w-24 text-xs md:text-base md:leading-5 px-3 py-2 text-white rounded uppercase font-bold hover:scale-105 hover:font-extrabold transition-all ${bgCompany[info.company]}`}
+            onClick={()=>setInfo({...info,company:(info.company+1)%3})}>
+            {company[info.company]}
+          </button>
+
+          <button className="leading-4 w-24 md:w-32 text-xs md:text-base md:leading-5 px-3 py-2 bg-yellow-500 rounded text-cyan-800 uppercase font-bold ml-5 md:ml-10 hover:text-yellow-500 hover:bg-cyan-800 hover:font-extrabold hover:scale-110 transition-all">
+            generar
+          </button>
+          
+        </div>
+
 
       </div>
     </div>
