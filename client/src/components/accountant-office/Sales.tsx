@@ -52,6 +52,23 @@ function Sales() {
     e.preventDefault()
     
   }
+
+  /*
+  const aligns = [
+    'text-center', // habilitado
+    'text-center', // dni
+    'text-center', // user name
+    'text-center', // name
+    'text-center', // tipo
+    'text-center', // ultima sesion
+    'text-center', // telefono
+    'text-center', // email
+    'text-center', // direccion
+    'text-center', // persona contacto
+    'text-center', // telefono pc
+  ]
+
+  */
   
   return (
     <div className={`${tableComponent.div} `}>
@@ -154,9 +171,9 @@ function Sales() {
             sale={sale}
             widths={widths}
             align={aligns}
-          />
-
-        )}
+          />)
+          
+        }
       </div>
 
     {/* _______________ PAGINATION  */}

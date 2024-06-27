@@ -56,4 +56,32 @@ export interface MonthStatements {
   link:         string,
 }
 
+export interface PersonelData {
+  valid:          boolean,
+  id:             number,
+  userName:       string,
+  name:           string,
+  type:           number,
+  lastSesion:     number,
+  phone:          number,
+  email:          string,
+  address:        string,
+  PC:             string,
+  phonePC:        number,
+
+}
+/*
+habilitado
+dni
+user name
+name
+tipo
+ultima sesion
+telefono
+email
+direccion
+persona contacto
+telefono pc
+*/
+
 

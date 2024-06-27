@@ -21,7 +21,6 @@ function Admin() {
         routeUser={appRoutes.admin}
         menuOptions = { AdmMenu }
         userName = "carlos"
-
       />
       {/* <Header /> */}
       <Outlet />

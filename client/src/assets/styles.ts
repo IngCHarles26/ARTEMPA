@@ -22,7 +22,7 @@ export const rowFormTable = {
 
   button: 'hover:scale-125 transition-all z-0 text-center',
 
-  input: 'border-gray-500 border-b-2 py-0.5 relative',
+  input: 'border-gray-500 border-b-2 py-0.5 relative px-1',
 
   popUp: 'uppercase absolute left-3 -bottom-8 bg-slate-500 text-white px-2 py-1 rounded text-sm w-auto text-nowrap font-bold z-50',
 }

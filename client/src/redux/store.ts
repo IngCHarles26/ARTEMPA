@@ -4,6 +4,7 @@ import styleSlice from "./slices/styleSlice";
 import clientsSlice from "./slices/clientsSlice";
 import statementsSlice from "./slices/statementsSlice";
 import salesSlice from "./slices/salesSlice";
+import personalSlice from "./slices/personalSlice";
 
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     clients:        clientsSlice,
     statements:     statementsSlice,
     sales:          salesSlice,
+    personel:       personalSlice,
   }
 })
 
