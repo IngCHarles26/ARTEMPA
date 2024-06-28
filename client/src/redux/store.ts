@@ -5,6 +5,7 @@ import clientsSlice from "./slices/clientsSlice";
 import statementsSlice from "./slices/statementsSlice";
 import salesSlice from "./slices/salesSlice";
 import personalSlice from "./slices/personalSlice";
+import notSlice from "./slices/notSlice";
 
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
     statements:     statementsSlice,
     sales:          salesSlice,
     personel:       personalSlice,
+    not:            notSlice,   // notificaciones
   }
 })
 

@@ -24,7 +24,7 @@ function Navbar(props:Props) {
         ${menuHidden && width<700 ? 'hidden' : 'flex'}
       `}>
 
-      <div className="flex flex-col gap-1 ">
+      <div className="flex flex-col gap-1.5 ">
 
         <UserOpt
             userName= { userName }
