@@ -1,16 +1,3 @@
-/*
-  id
-  user name
-  email
-  habilitado
-  tipo
-  telefono
-  persona contacto
-  telefono persona contato
-  direccion
-  ultima sesion
-*/
-
 import { useSelector } from "react-redux";
 import { tableComponent } from "../../assets/styles";
 import useWindowSize from "../../hooks/useWindowSize";
@@ -23,16 +10,16 @@ function DataPersonnel() {
 
   const widths = [
     'min-w-10 md:w-1/48', //      
-    'min-w-20 md:w-3/48', // habilitado     
-    'min-w-28 md:w-4/48', // dni            7
-    'min-w-36 md:w-4/48', // user name
-    'min-w-60 md:w-5/48', // name
-    'min-w-28 md:w-3/48', // tipo
-    'min-w-32 md:w-4/48', // ultima sesion
+    'min-w-12 md:w-2/48', // habilitado     
+    'min-w-20 md:w-4/48', // dni            7
+    'min-w-32 md:w-4/48', // user name
+    'min-w-56 md:w-5/48', // name
+    'min-w-20 md:w-3/48', // tipo
+    'min-w-40 md:w-5/48', // ultima sesion
     'min-w-28 md:w-4/48', // telefono
-    'min-w-48 md:w-5/48', // email
-    'min-w-60 md:w-5/48', // direccion
-    'min-w-60 md:w-5/48', // persona contacto
+    'min-w-56 md:w-5/48', // email
+    'min-w-64 md:w-5/48', // direccion
+    'min-w-40 md:w-5/48', // persona contacto
     'min-w-28 md:w-5/48 ', // telefono pc
   ]
   const aligns = [
@@ -51,7 +38,7 @@ function DataPersonnel() {
   ]
 
   const {height} = useWindowSize()
-  const personelInfo = useSelector( (st:TypeStore) => st.personel)
+  const {data:personelInfo} = useSelector( (st:TypeStore) => st.personel)
 
   return (
     <div className={`${tableComponent.div}`}>
@@ -67,7 +54,7 @@ function DataPersonnel() {
         
         <input 
           type="string"
-          placeholder="ACTIVO"
+          placeholder="HAB"
           className={`${tableComponent.input}    
             ${widths[1]}`}/>
         
@@ -127,7 +114,7 @@ function DataPersonnel() {
         
         <input 
           type="string"
-          placeholder="TELEFONO P.C."
+          placeholder="P.C. #"
           className={`${tableComponent.input}    
             ${widths[11]}`}/>
 

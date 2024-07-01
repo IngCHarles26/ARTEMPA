@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type Type = 'success' | 'info' | 'alert' | 'error';
 
-const initialState = {
-  message: 'Mensaje Prueba mensaje mensaje           mensaje',
-  color: 'bg-green-500',
-  time: 1000,
+interface InitialState {
+  message: string[],
+  type: Type,
+  visible: boolean,
+}
+
+const initialState:InitialState = {
+  message: [],
+  type: 'error',
+  visible: false,
 }
 
 
@@ -13,14 +20,21 @@ const notSlice = createSlice({
   initialState,
   reducers:{
     setMessage: ( sta , act ) => {
-      const {message,color} = act.payload
+      const {message,type} = act.payload
       sta.message = message
-      sta.color = color
+      sta.type = type
+      sta.visible = true
+    },
+    delMessage: ( sta ) => {
+      sta.visible = false
     }
   }
 })
 
 
 
-export const { setMessage } = notSlice.actions;
+export const { setMessage , delMessage } = notSlice.actions;
 export default notSlice.reducer;
+
+
+export const notSlConvert = (message:string[],type:Type) => ({message,type})

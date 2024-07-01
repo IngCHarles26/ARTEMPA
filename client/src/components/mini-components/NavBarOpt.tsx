@@ -26,7 +26,7 @@ function NavBarOpt(props:Props) {
         onMouseEnter={()=>setHover(true)}
         onMouseLeave={()=>setHover(false)}
         onClick={handleClick}
-        className="transition-all flex items-center justify-start cursor-pointer hover:scale-105 hover:font-bold z-50"
+        className={`transition-all flex items-center justify-start cursor-pointer hover:scale-105 hover:font-bold z-50 ${selected && '-order-1 scale-125'}`}
       >
         {image(hover || selected)}
 

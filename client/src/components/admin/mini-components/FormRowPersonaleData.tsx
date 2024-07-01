@@ -3,6 +3,8 @@ import useRowFocusForm from "../../../hooks/useRowFocusForm";
 import { PersonelData } from "../../../types";
 import useHandleChange from "../../../hooks/useHandleChange";
 import { rowFormTable, rowFormTableColor } from "../../../assets/styles";
+import { useSelector } from "react-redux";
+import { TypeStore } from "../../../redux/store";
 
 interface Props {
   personal:   PersonelData,
@@ -11,6 +13,7 @@ interface Props {
 }
 
 function FormRowDataPersonel(props:Props) {
+  const {types} = useSelector((st:TypeStore)=>st.personel)
   const {personal,widths:w,align:al} = props
   const {rowRef,editable,setEditable} = useRowFocusForm()
   const [editHover, setEditHover] = useState(false);
@@ -51,7 +54,7 @@ function FormRowDataPersonel(props:Props) {
         type="text"
         name='valid'
         ref={rowRef}
-        value={personalInfo.valid ? 'X' : ''}
+        value={personalInfo.valid ? 'SI' : 'NO'}
         disabled={!editable}
         onChange={handleChange}
         className={`${rowFormTable.input} uppercase
@@ -92,7 +95,7 @@ function FormRowDataPersonel(props:Props) {
       <input 
         type="string"
         name='type'
-        value={personalInfo.type}
+        value={types[personalInfo.type]}
         disabled={!editable}
         onChange={handleChange}
         className={`${rowFormTable.input} 
@@ -102,7 +105,7 @@ function FormRowDataPersonel(props:Props) {
       <input 
         type="string"
         name='lastSesion'
-        value={personalInfo.lastSesion}
+        value={(new Date(personalInfo.lastSesion)).toLocaleString()}
         disabled={!editable}
         onChange={handleChange}
         className={`${rowFormTable.input} 

@@ -26,10 +26,6 @@ function Navbar(props:Props) {
 
       <div className="flex flex-col gap-1.5 ">
 
-        <UserOpt
-            userName= { userName }
-          />
-
         {
           menuOptions.map(({image,name,route},ix)=>{
             const toRoute = `/${routeUser(route)}`
@@ -49,7 +45,9 @@ function Navbar(props:Props) {
 
       <div className="z-50">
         {/* <TextSizeHandler /> */}
-
+        <UserOpt
+            userName= { userName }
+          />
         <ExitOpt />   
       </div>
 

@@ -3,21 +3,26 @@ import { dataPersonel } from "../../assets/dataHelp";
 import { PersonelData } from "../../types";
 
 
-
-const initialState:PersonelData[] = [...dataPersonel]
+const initialState = {
+  data: [...dataPersonel],
+  types: ['admin','tecnico','oficina','contador'],
+}
 
 
 const personelSlice = createSlice({
   name: 'personel',
   initialState,
   reducers:{
+    setTypes: ( sta , act ) =>{
+      sta.types = act.payload
+    },
     addPersonel: ( sta , act ) => {
-      sta.unshift(act.payload)
+      sta.data.unshift(act.payload)
     }
   }
 })
 
 
 
-export const {addPersonel} = personelSlice.actions;
+export const {addPersonel,setTypes} = personelSlice.actions;
 export default personelSlice.reducer;
