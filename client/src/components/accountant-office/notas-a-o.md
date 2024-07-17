@@ -1,0 +1,1 @@
+Tiene que haber un header que indique en que componente estamos mas allá de la barra lateral que hay a la izuiqerda

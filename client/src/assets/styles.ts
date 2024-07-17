@@ -8,11 +8,11 @@ export const tableComponent = {
 
   form: 'flex justify-start items-center md:border-b-2 border-stone-100 h-10',
 
-  msg: 'text-center p-1 bg-neutral-700 placeholder:text-white outline-none text-neutral-200 uppercase font-bold h-full hover:opacity-90 md:border-b-2 border-stone-100',
+  msg: 'text-center p-1 bg-neutral-700 placeholder:text-white outline-none text-neutral-200 uppercase font-bold h-full hover:opacity-90 md:border-b-2 border-stone-100 text-sm md:text-lg',
 
   buttonP: '',
   
-  input: 'text-center p-1 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90 md:border-b-2 border-stone-100',
+  input: 'text-center p-1 bg-neutral-700 placeholder:text-white outline-none border-l-2 text-neutral-200 uppercase font-bold h-full hover:opacity-90 md:border-b-2 border-stone-100 text-sm md:text-lg',
 
   formContainer: 'flex flex-col',
 }

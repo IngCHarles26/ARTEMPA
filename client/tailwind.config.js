@@ -6,6 +6,15 @@ export default {
   ],
   theme: {
     extend: {
+      writingMode: {
+        'vertical-rl': 'vertical-rl',
+      },
+      textOrientation: {
+        'mixed': 'mixed',
+      },
+      rotate: {
+        '180': '180deg',
+      },
       width:{
         '1/48':'2.0833333333333335%',
         '2/48':'4.166666666666667%',

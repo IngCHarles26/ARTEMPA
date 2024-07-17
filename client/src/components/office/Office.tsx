@@ -31,3 +31,9 @@ function Office() {
 }
 
 export default Office;
+
+/*
+  Agregar un elemento que muestre el tareo de requerimientos
+    muestra una tabla con el detalle por ot
+    muestra una tabla con el resumen de lo que se requiere comrpar
+*/

@@ -70,6 +70,22 @@ export interface PersonelData {
   phonePC:        number,
 
 }
+
+export interface StockData {
+  id: string,
+  type: string,
+  quantity: number,
+  brand: string,
+  detail: string,
+}
+
+export interface HistoryStockData{
+  date: number,
+  id: string,
+  quantity: number,
+  user: string,
+  ot: string
+}
 /*
 habilitado
 dni

@@ -1,5 +1,5 @@
 import { ClientData } from "../components/accountant-office/ClientsData"
-import { ClientsData, MonthStatements, PersonelData, PurchasesData, SalesData, SuppliersData } from "../types"
+import { ClientsData, HistoryStockData, MonthStatements, PersonelData, PurchasesData, SalesData, StockData, SuppliersData } from "../types"
 
 export const dataStatementsAbm = [
   {year: 2022,month: 1,company: 'abm',link: 'Enlace abm-1-2022'
@@ -676,3 +676,27 @@ export const dataPersonel: PersonelData[] = [
     phonePC: 936664619
   }
 ];
+
+export const dataHistoryInventory:HistoryStockData[] = [
+  { date: 20230101, id: '1', quantity: 10, user: 'user1', ot: 'OT001' },
+  { date: 20230102, id: '2', quantity: 5, user: 'user2', ot: 'OT002' },
+  { date: 20230103, id: '3', quantity: 15, user: 'user3', ot: 'OT003' },
+  { date: 20230104, id: '4', quantity: 7, user: 'user4', ot: 'OT004' },
+  { date: 20230105, id: '5', quantity: 20, user: 'user5', ot: 'OT005' },
+  { date: 20230106, id: '6', quantity: 12, user: 'user6', ot: 'OT006' },
+  { date: 20230107, id: '7', quantity: 25, user: 'user7', ot: 'OT007' },
+  { date: 20230108, id: '8', quantity: 8, user: 'user8', ot: 'OT008' },
+  { date: 20230109, id: '9', quantity: 30, user: 'user9', ot: 'OT009' },
+];
+
+export const dataStock:StockData[] = [
+  { id: '1', type: 'Electronics', quantity: 50, brand: 'Sony', detail: 'Headphones' },
+  { id: '2', type: 'Electronics', quantity: 30, brand: 'Apple', detail: 'iPhone 12' },
+  { id: '3', type: 'Furniture', quantity: 20, brand: 'Ikea', detail: 'Chair' },
+  { id: '4', type: 'Electronics', quantity: 15, brand: 'Samsung', detail: 'Galaxy S21' },
+  { id: '5', type: 'Furniture', quantity: 25, brand: 'Ikea', detail: 'Table' },
+  { id: '6', type: 'Clothing', quantity: 100, brand: 'Nike', detail: 'T-shirt' },
+  { id: '7', type: 'Clothing', quantity: 200, brand: 'Adidas', detail: 'Shoes' },
+  { id: '8', type: 'Electronics', quantity: 40, brand: 'Sony', detail: 'TV' },
+  { id: '9', type: 'Furniture', quantity: 10, brand: 'Ashley', detail: 'Sofa' },
+]; 

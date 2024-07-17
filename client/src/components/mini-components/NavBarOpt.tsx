@@ -31,7 +31,7 @@ function NavBarOpt(props:Props) {
         {image(hover || selected)}
 
         {
-          hover &&  <p className="uppercase absolute left-14 bg-neutral-500 text-white px-2 py-1 rounded opacity-95 text-sm w-auto text-nowrap">{name}</p>
+          hover &&  <p className="uppercase absolute left-12 bg-neutral-500 text-white px-2 py-1 rounded opacity-95 text-xs md:text-sm w-auto text-nowrap">{name}</p>
         }
        
     </div>

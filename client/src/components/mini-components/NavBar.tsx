@@ -20,11 +20,11 @@ function Navbar(props:Props) {
   const { width } = useWindowSize()
 
   return (
-    <div className={`bg-cyan-800 p-2 flex-col justify-between relative 
+    <div className={`bg-cyan-800 p-1 flex-col justify-between relative 
         ${menuHidden && width<700 ? 'hidden' : 'flex'}
       `}>
 
-      <div className="flex flex-col gap-1.5 ">
+      <div className="flex flex-col gap-1.5 p-1">
 
         {
           menuOptions.map(({image,name,route},ix)=>{
